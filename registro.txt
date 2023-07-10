@@ -1,0 +1,12 @@
+11111111-1,Juan,Pérez,9788490628761,El poder del ahora,prestamo
+22222222-2,María,González,9788408197616,La chica del tren,prestamo
+33333333-3,Pedro,López,9788408159171,Orgullo y prejuicio,devolucion
+1,1,1,9788408159171,Orgullo y prejuicio,devolucion
+33333333-3,Pedro,López,9789561224094,Francisca/ yo te amo,prestamo
+11111111-1,Juan,Pérez,9788499983196,El Libro Troll,prestamo
+11111111-1,Juan,Pérez,9788490626726,La Tregua,devolucion
+44444444-4,Ana,Martínez,9788434852860,Campos de fresas,devolucion
+44444444-4,Ana,Martínez,9789563476637,Eleanor y Park,prestamo
+22222222-2,María,González,9789563476637,Eleanor y Park,prestamo
+22222222-2,María,González,9789563476637,Eleanor y Park,devolucion
+33333333-3,Pedro,López,9789563638431,Quique Hache/ detective,prestamo

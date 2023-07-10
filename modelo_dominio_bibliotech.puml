@@ -1,0 +1,44 @@
+@startuml
+entity SistemaBiblioTech {
++ Inicio de sesión
++ Menú principal
++ Agregar nuevo libro
++ Buscar libro
++ Devolver libro
++ Prestar libro
+
+}
+
+entity Libro {
++ ISBN
++ Título
++ Autor
++ Categoría
++ Número de páginas
++ Stock
+}
+
+
+entity Usuario {
++ Nombre
++ Apellido
++ Rut
++ Contraseña
+}
+
+
+entity Transaccion {
++ Rut de vendedor
++ Nombre
++ Apellido
++ ISBN
++ Título del libro
++ Tipo de transacción
+}
+
+SistemaBiblioTech "1" --> "1..*" Usuario:Tiene
+SistemaBiblioTech "1" --> "1..*" Libro:Tiene
+Usuario"1..*" --> "1..*" Transaccion:Realiza
+Transaccion"1..*" <-> "1..*" Libro:Trasacciona
+note right: En una transacción puede realizarse una devolución o una solicitación
+@enduml

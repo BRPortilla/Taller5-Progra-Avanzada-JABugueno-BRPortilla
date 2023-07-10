@@ -1,0 +1,259 @@
+@startuml
+package Entidades {
+Class Libro{
+-codigo_isbn: String
+-titulo: String
+-autor: String
+-categoria: String
+-cantidad_paginas: int
+-stock: int
++Libro(codigo_isbn: String,
+ titulo: String, autor: String,
+ categoria: String,
+ cantidad_paginas: int, stock: int)
++getCodigo_isbn(): String
++getTitulo(): String
++getAutor(): String
++getCategoria(): String
++getCantidad_paginas(): int
++getStock(): int
++setStock(stock: int): void
+ }
+
+Class Transaccion{
+-rut_vendedor: String
+-nombre: String
+-apellido: String
+-isbn: String
+-titulo_libro: String
+-tipo_transaccion: boolean
++Transaccion(rut_vendedor:
+ String, nombre: String,
+apellido: String, isbn: String,
+titulo_libro: String,
+ tipo_transaccion: boolean)
++getRut_vendedor(): String
++getNombre(): String
++getApellido(): String
++getIsbn(): String
++getTitulo_libro(): String
++isTipo_transaccion(): boolean
+ }
+
+Class Usuario{
+-rut: String
+-nombre: String
+-apellido: String
+-contrasenia: String
++Usuario(rut: String, nombre: String,
+apellido: String, contrasenia: String)
++getRut(): String
++getNombre(): String
++getApellido(): String
++getContrasenia(): String
+ }
+}
+
+package Forms {
+interface Form <<interface>>{
++ iniciarFormularios(listaUsuarios: LinkedList<Usuario>,
+listaLibros: LinkedList<Libro>,
+ listaTransacciones: LinkedList<Transaccion>): void
+    }
+Class FormIMPL implements Form{
+-listaUsuarios: LinkedList<Usuario>
+-listaLibros: LinkedList<Libro>
+-listaTransacciones: LinkedList<Transaccion>
++FormImpl(listaUsuarios: LinkedList<Usuario>,
+listaLibros: LinkedList<Libro>,
+listaTransacciones: LinkedList<Transaccion>)
+ }
+
+Class Form_Agregar_Nuevo_Libro{
+-listaUsuarios: LinkedList<Usuario>
+-listaLibros: LinkedList<Libro>
+-listaTransacciones: LinkedList<Transaccion>
+-usuario_loggeado: Usuario
+-libro: Libro
+-addBook_form: JPanel
+-label_isbn: JLabel
+-label_titulo: JLabel
+-label_autor: JLabel
+-label_categoria: JLabel
+-label_numero_paginas: JLabel
+-label_stock: JLabel
+-campo_isbn: JTextField
+-campo_titulo: JTextField
+-campo_autor: JTextField
+-campo_paginas: JTextField
+-campo_categoria: JTextField
+-campo_copias: JTextField
+-boton_agregar: JButton
+-boton_regresar_menu: JButton
+
++Form_Agregar_Nuevo_Libro(listaUsuarios: LinkedList<Usuario>,
+listaLibros: LinkedList<Libro>, listaTransacciones: LinkedList<Transaccion>, usuario: Usuario)
++agregarLibro(listaLibros: LinkedList<Libro>): void
++limpiarCampos(): void
+ }
+
+Class Form_Buscar_Libro{
+-buscarButton: JButton
+-campo_isbn: JTextField
+-boton_regresar: JButton
+-label_isbn: JLabel
+-findBook_form: JPanel
+-label_titulo: JLabel
+-label_autor: JLabel
+-label_categoria: JLabel
+-label_copias: JLabel
+-tituloLibro: JLabel
+-autorLibro: JLabel
+-categoriaLibro: JLabel
+-cantidadCopiasLibro: JLabel
+-label_paginas: JLabel
+-cantidadPaginas: JLabel
+-listaLibros: LinkedList<Libro>
+-listaUsuarios: LinkedList<Usuario>
+-listaTransacciones: LinkedList<Transaccion>
+-usuario_loggeado: Usuario
++Form_Buscar_Libro(listaLibros: LinkedList<Libro>, listaUsuarios: LinkedList<Usuario>,
+listaTransacciones: LinkedList<Transaccion>, usuario_loggeado: Usuario)
++buscarLibro(listaLibros: LinkedList<Libro>): void
+}
+
+Class Form_Devolver_Libro{
+- campo_isbn: JTextField
+- boton_buscar: JButton
+- label_isbn: JLabel
+-boton_devolver: JButton
+-boton_regresar: JButton
+-label_titulo: JLabel
+-label_autor: JLabel
+-label_categoria: JLabel
+-label_paginas: JLabel
+-label_copias: JLabel
+-tituloLibro: JLabel
+-autorLibro: JLabel
+-categoriaLibro: JLabel
+-cantidadPaginas: JLabel
+-cantidadCopias: JLabel
+-giveBackBook_form: JPanel
+-listaUsuarios: LinkedList<Usuario>
+-listaLibros: LinkedList<Libro>
+-listaTransacciones: LinkedList<Transaccion>
+-usuario_loggeado: Usuario
+-libro: Libro
++Form_Devolver_Libro(listaUsuarios: LinkedList<Usuario>, listaLibros: LinkedList<Libro>,
+listaTransacciones: LinkedList<Transaccion>,usuario: Usuario)
++buscarLibro(listaLibros: LinkedList<Libro>): Libro
++limpiarLabels(): void
++devolverLibro(listaLibros: LinkedList<Libro>, listaTransacciones: LinkedList<Transaccion>,
+usuario: Usuario, libro: Libro): void
++sumarStock(listaLibros: LinkedList<Libro>): void
+}
+
+Class Form_Inicio_Sesion  {
+-session_Form: JPanel
+-campo_contrasenia: JTextField
+-campo_rut: JTextField
+-boton_iniciar_sesion: JButton
+-boton_cerrar_aplicacion: JButton
+-label_contrasenia: JLabel
+-label_rut: JLabel
+-listaUsuarios: LinkedList<Usuario>
+-listaLibros: LinkedList<Libro>
+-listaTransacciones: LinkedList<Transaccion>
++Form_Inicio_Sesion(listaUsuarios: LinkedList<Usuario>, listaLibros: LinkedList<Libro>,
+listaTransacciones: LinkedList<Transaccion>)
++usuarioExiste(listaUsuarios: LinkedList<Usuario>): Usuario
++limpiar(): void
++cerrar(listaUsuarios: LinkedList<Usuario>, listaLibros: LinkedList<Libro>,
+listaTransacciones: LinkedList<Transaccion>): void
+ }
+
+Class Form_Menu_Principal{
+-mainMenuForm: JPanel
+-boton_agregarNuevoLibro: JButton
+-boton_buscarLibro: JButton
+-boton_prestarLibro: JButton
+-boton_devolver_libro: JButton
+-boton_cerrar_sesion: JButton
+-listaLibros: LinkedList<Libro>
+-listaUsuarios: LinkedList<Usuario>
+-listaTransacciones: LinkedList<Transaccion>
+-usuario_loggeado: Usuario
++Form_Menu_Principal(listaLibros: LinkedList<Libro>, listaUsuarios: LinkedList<Usuario>,
+listaTransacciones: LinkedList<Transaccion>, usuario: Usuario)
+ }
+
+Class Form_Prestar_Libro{
+-borrowBook_form: JPanel
+-campo_isbn: JTextField
+-buscarButton: JButton
+-label_isbn: JLabel
+-boton_regresar: JButton
+-label_titulo: JLabel
+-label_autor: JLabel
+-label_categoria: JLabel
+-label_copias: JLabel
+-tituloLibro: JLabel
+-autorLibro: JLabel
+-categoriaLibro: JLabel
+-cantidadCopiasLibro: JLabel
+-boton_prestar: JButton
+-label_paginas: JLabel
+-cantidadPaginas: JLabel
+-listaLibros: LinkedList<Libro>
+-listaUsuarios: LinkedList<Usuario>
+-listaTransacciones: LinkedList<Transaccion>
+-usuario_loggeado: Usuario
+-libro_prestamo: Libro
++ Form_Prestar_Libro(listaLibros: LinkedList<Libro>, listaUsuarios: LinkedList<Usuario>, listaTransacciones: LinkedList<Transaccion>,
+usuario: Usuario)
++ buscarLibro(listaLibros: LinkedList<Libro>):Libro
++ realizarPrestamo(listaLibros: LinkedList<Libro>, listaTransacciones: LinkedList<Transaccion>,
+usuario: Usuario, libro: Libro): void
++ cambiarStock(listaLibros: LinkedList<Libro>): void
++ limpiarCampos(): void
+ }
+}
+
+package Utils{
+ interface Sistema {
++ iniciarPrograma(): void
++ lecturaArchivos(): void
+    }
+Class SistemaImpl Implements Sistema {
+- listaUsuarios: LinkedList<Usuario>
+- listaLibros: LinkedList<Libro>
+- listaTransacciones: LinkedList<Transaccion>
++ SistemaImpl()
+}
+
+Class LecturaArchivos{
++leerArchivoLibros(listaLibros: LinkedList<Libro>)):void
++leerArchivoUsuarios(listaUsuarios: LinkedList<Usuario>)):void
++leerArchivoTransaccion(listaTransacciones: LinkedList<Transaccion>):void
+}
+Class EscrituraArchivos{
++escribirArchivoLibros(listaLibros: LinkedList<Libro>)):void
++escribirArchivoUsuarios(listaUsuarios: LinkedList<Usuario>)):void
++escribirArchivoTransacciones(listaTransacciones: LinkedList<Transaccion>)):void
+
+ }
+}
+FormIMPL "1" --> "1" Form_Inicio_Sesion:Tiene
+Form_Menu_Principal "1" <-> "1" Form_Devolver_Libro:Lleva
+Form_Inicio_Sesion "1" <-> "1" Form_Menu_Principal:Lleva
+Form_Menu_Principal "1" <-> "1" Form_Buscar_Libro:Lleva
+Form_Menu_Principal "1" <-> "1" Form_Agregar_Nuevo_Libro:Lleva
+Form_Menu_Principal "1" <-> "1" Form_Prestar_Libro:Lleva
+Usuario "1..*" -> "0..*" Transaccion:Realizan
+Transaccion "1..*" -> "1..*" Libro:Transacciona
+Usuario "1..*" -> "1..*" Libro:Agregan
+Usuario "1..*" -> "1" Form_Inicio_Sesion:Ingresa
+SistemaImpl "1" -> "1" LecturaArchivos:Usa
+SistemaImpl "1" -> "1" EscrituraArchivos:Usa
+SistemaImpl "1" -> "1" FormIMPL:Inicializa
+@enduml
